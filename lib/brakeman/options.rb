@@ -158,6 +158,10 @@ module Brakeman::Options
           options[:html_style] = File.expand_path file
         end
 
+        opts.on "-b CONFIDENCEFILE", "--confidence-file", "Use configuration to override confidenece levels" do |file|
+          options[:confidence_file] = file
+        end
+
         opts.on "-i IGNOREFILE", "--ignore-config IGNOREFILE", "Use configuration to ignore warnings" do |file|
           options[:ignore_file] = file
         end

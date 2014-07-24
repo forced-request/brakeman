@@ -86,6 +86,9 @@ module Brakeman
         m.choice "a"
         m.choice "s"
         m.choice "q"
+        m.choice "h"
+        m.choice "m"
+        m.choice "w"
         m.choice "?" do
           say <<-HELP
 i - Add warning to ignore list
@@ -94,6 +97,9 @@ s - Skip this warning (will remain ignored or shown)
 u - Remove this warning from ignore list
 a - Ignore this warning and all remaining warnings
 k - Skip this warning and all remaining warnings
+h - Set confidence level to High
+m - Set confidence level to Medium
+w - Set confidence level to Weak
 q - Quit, do not update ignored warnings
 ? - Display this help
           HELP
@@ -175,6 +181,12 @@ q - Quit, do not update ignored warnings
         ignore_rest warning
       when "k"
         skip_rest warning
+      when "h"
+        set_confidence warning, "h"
+      when "m"
+          set_confidence warning, "m"
+      when "w"
+          set_confidence warning, "w"
       when "q"
         quit
       when "?"
@@ -182,6 +194,10 @@ q - Quit, do not update ignored warnings
       else
         raise "Unexpected action"
       end
+    end
+
+    def set_confidence warning, val
+
     end
 
     def ignore warning
